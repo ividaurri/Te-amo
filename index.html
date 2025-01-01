@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te amo con todo mi corazón</title>
+    <style>
+        /* Estilo general para la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Estilo para el botón de audio */
+        #btn-audio {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 12px 18px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #btn-audio:hover {
+            background-color: #ff1493;
+        }
+
+        /* Estilo para la imagen */
+        img {
+            width: 200px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo para el texto del mensaje */
+        h1 {
+            font-size: 1.5em;
+            color: #333;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0;
+            padding: 0 10px;
+            text-align: center;
+            font-family: 'Helvetica', sans-serif;
+            margin-top: 50px;
+        }
+
+        /* Estilo para los corazones que caen */
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 30px;
+            color: red;
+            animation: fall 5s infinite;
+            opacity: 0;
+        }
+
+        /* Animación para los corazones cayendo */
+        @keyframes fall {
+            0% {
+                top: -50px;
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                top: 100vh;
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Estilo para el botón siguiente */
+        .btn-siguiente {
+            margin-top: 40px;
+            padding: 12px 24px;
+            font-size: 1.2em;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-siguiente:hover {
+            background-color: #ff1493;
+        }
+
+        /* Media query para dispositivos pequeños (teléfonos) */
+        @media (max-width: 600px) {
+            img {
+                width: 150px;  /* Hacer la imagen más pequeña en móviles */
+            }
+
+            h1 {
+                font-size: 1.2em;  /* Reducir el tamaño del texto en móviles */
+                margin-top: 30px;
+            }
+
+            .btn-siguiente {
+                font-size: 1em;
+                padding: 10px 18px;
+            }
+
+            #btn-audio {
+                padding: 10px 15px;
+                font-size: 1.2em;
+            }
+        }
+
+        /* Media query para pantallas más grandes (tabletas y computadoras) */
+        @media (min-width: 601px) {
+            h1 {
+                font-size: 1.5em;
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Reproductor de música -->
+    <audio id="audio" loop>
+        <source src="img/cancion.mp3" type="audio/mp3">
+        <source src="img/cancion.ogg" type="audio/ogg">
+        Tu navegador no soporta el formato de audio.
+    </audio>
+
+    <script>
+        // Referencia al botón y al audio
+        const audio = document.getElementById('audio');
+        const btnAudio = document.getElementById('btn-audio');
+
+        // Función para cambiar el estado de audio
+        btnAudio.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();  // Reproducir el audio
+                btnAudio.textContent = '⏸️';  // Cambia el texto del botón a "Pausa"
+            } else {
+                audio.pause();  // Pausar el audio
+                btnAudio.textContent = '▶️';  // Cambia el texto del botón a "Reproducir"
+            }
+        });
+
+        // Espera a que la página cargue completamente y activa el audio
+        window.addEventListener('load', function() {
+            audio.muted = false;  // El audio no estará en silencio por defecto
+        });
+    </script>
+
+    <!-- Botón para reproducir/pausar audio -->
+    <button id="btn-audio">▶️</button>
+
+    <div class="container">
+        <!-- Imagen centrada arriba del texto -->
+        <img src="img/10.jpg" alt="Imagen de amor">
+
+        <!-- Mensaje de amor con la corrección de las faltas ortográficas -->
+        <h1>Conocerte fue lo más hermoso por lo que he pasado, eres mi más bonita casualidad. Nunca dejes de sonreír, porque recuerda que tú y yo somos uno mismo, y lo que le pase a uno le duele al otro, aunque nunca dejaremos de apoyarnos. Te amo mucho, corazón. Eres una persona tan dulce por dentro, y tan preciosa por fuera. Vamos juntos de la mano en este recorrido, tú y yo, juntitos. Muchísimas gracias por aparecer en mi vida, mi niña. Me has traído tantas alegrías, tantos momentos tan bellos, desde el día que te conocí, cuando hablamos por primera vez por mensaje, por llamada, esa llamada que duró 12 horas, la primera vez que te vi en persona, tan linda, llena de nervios al igual que yo. Te adoro, mi amor. Te adoro muchísimo. Me emociona el futuro, pero solo me emociona el futuro que es al lado tuyo, porque así todo será tan bonito. Te amo, mi vida. Feliz Año Nuevo, vamos por toda esa vida junta que tanto anhelamos, todos nuestros sueños. Te amo, mi amor. ❤️</h1>
+    </div>
+
+    <!-- Corazones cayendo por la página -->
+    <div class="heart" style="left: 10%; animation-duration: 5s; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 25%; animation-duration: 7s; animation-delay: 2s;">❤️</div>
+    <div class="heart" style="left: 40%; animation-duration: 6s; animation-delay: 1s;">❤️</div>
+    <div class="heart" style="left: 60%; animation-duration: 8s; animation-delay: 3s;">❤️</div>
+    <div class="heart" style="left: 80%; animation-duration: 5s; animation-delay: 0.5s;">❤️</div>
+    <div class="heart" style="left: 15%; animation-duration: 6s; animation-delay: 4s;">❤️</div>
+    <div class="heart" style="left: 55%; animation-duration: 7s; animation-delay: 2s;">❤️</div>
+    <div class="heart" style="left: 70%; animation-duration: 5s; animation-delay: 1s;">❤️</div>
+    <div class="heart" style="left: 90%; animation-duration: 6s; animation-delay: 3s;">❤️</div>
+
+    <!-- Botón para ir a la siguiente página -->
+    <button class="btn-siguiente" onclick="location.href='te-amo.html'">Siguiente</button>
+
+</body>
+</html>
